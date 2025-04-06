@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Генератор комплиментов</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(120deg, #fbc2eb, #a6c1ee);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      text-align: center;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      max-width: 500px;
+    }
+    h1 {
+      color: #ec407a;
+    }
+    #compliment {
+      font-size: 22px;
+      margin: 20px 0;
+      color: #333;
+      min-height: 40px;
+      transition: opacity 0.3s ease;
+    }
+    button {
+      background-color: #ec407a;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #d81b60;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Комплимент дня</h1>
+    <p id="compliment">Нажми на кнопку или клавишу Enter, чтобы получить комплимент!</p>
+    <button onclick="generateCompliment()">Получить комплимент</button>
+  </div>
+
+  <script>
+    const compliments = [
+      "Ты сегодня просто сияешь!",
+      "Ты умнее, чем думаешь!",
+      "С тобой приятно рядом быть!",
+      "Ты вдохновляешь других!",
+      "Ты делаешь этот мир ярче!",
+      "Ты — настоящая радость для окружающих!",
+      "У тебя доброе сердце и красивая душа!",
+      "Ты уникален и неповторим!",
+      "Твоя улыбка делает день лучше!",
+      "Ты приносишь свет в жизни других!"
+    ];
+
+    function generateCompliment() {
+      const random = Math.floor(Math.random() * compliments.length);
+      const compliment = compliments[random];
+      const complimentElement = document.getElementById("compliment");
+      complimentElement.style.opacity = 0;
+      setTimeout(() => {
+        complimentElement.textContent = compliment;
+        complimentElement.style.opacity = 1;
+      }, 300);
+    }
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        generateCompliment();
+      }
+    });
+  </script>
+</body>
+</html>
